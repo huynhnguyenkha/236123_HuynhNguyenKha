@@ -89,3 +89,35 @@ Chuỗi kết nối được cấu hình qua biến môi trường `MONGODB_URI`
     npm install
     cp .env.example .env   # rồi điền MONGODB_URI, PORT
     node index.js
+
+    ## 8. Chạy backend bằng Docker
+
+Image trên Docker Hub: https://hub.docker.com/r/huynhnguyenkha236123/backend
+
+Image được GitHub Actions tự động build và đẩy lên Docker Hub khi có thay đổi trong thư mục `backend`.
+
+### Chạy bằng image có sẵn
+
+```bash
+docker pull huynhnguyenkha236123/backend:latest
+docker run -d --name backend -p 5000:5000 \
+  -e PORT=5000 \
+  -e MONGODB_URI="<chuỗi kết nối MongoDB Atlas>" \
+  -e CORS_ORIGIN="http://localhost:5173" \
+  huynhnguyenkha236123/backend:latest
+```
+
+### Tự build từ mã nguồn
+
+```bash
+cd backend
+docker build -t huynhnguyenkha236123/backend:latest .
+docker run -d --name backend -p 5000:5000 --env-file .env huynhnguyenkha236123/backend:latest
+```
+
+### Kiểm tra
+
+- http://localhost:5000/health
+- http://localhost:5000/api/foods
+
+Thông tin bí mật (`MONGODB_URI`) chỉ truyền lúc chạy container, không nằm trong image.
