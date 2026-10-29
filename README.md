@@ -69,3 +69,23 @@ Frontend chạy tại http://localhost:5173
 | imageUrl | String | Đường dẫn hình ảnh |
 
 Chuỗi kết nối được cấu hình qua biến môi trường `MONGODB_URI` (xem `backend/.env.example`). 
+
+
+## 7. API
+
+| Phương thức | Endpoint | Chức năng |
+|---|---|---|
+| GET | /health | Kiểm tra trạng thái backend |
+| GET | /api/foods | Lấy danh sách món ăn |
+| GET | /api/foods?search=pho | Tìm kiếm theo tên, loại, vùng miền |
+| GET | /api/foods/:id | Xem một món ăn (theo foodId) |
+| POST | /api/foods | Thêm món ăn |
+| PUT | /api/foods/:id | Cập nhật món ăn |
+| DELETE | /api/foods/:id | Xóa món ăn |
+
+### Chạy backend
+
+    cd backend
+    npm install
+    cp .env.example .env   # rồi điền MONGODB_URI, PORT
+    node index.js
