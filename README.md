@@ -49,3 +49,23 @@ Frontend chạy tại http://localhost:5173
 
 ## 5. Link triển khai
 (Sẽ cập nhật ở các câu sau)
+
+
+## 6. Cơ sở dữ liệu
+- Nền tảng: MongoDB Atlas
+- Database: `236123_HuynhNguyenKha`
+- Collection: `foods`
+
+| Trường | Kiểu | Ý nghĩa |
+|---|---|---|
+| foodId | String | Mã món ăn (duy nhất) |
+| name | String | Tên món ăn |
+| category | String | Loại món ăn |
+| cuisine | String | Ẩm thực / vùng miền |
+| ingredients | Array | Danh sách nguyên liệu |
+| price | Number | Giá bán |
+| quantity | Number | Số lượng hiện có |
+| description | String | Mô tả món ăn |
+| imageUrl | String | Đường dẫn hình ảnh |
+
+Chuỗi kết nối được cấu hình qua biến môi trường `MONGODB_URI` (xem `backend/.env.example`). 
